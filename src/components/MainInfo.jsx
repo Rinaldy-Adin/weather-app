@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const MainInfo = (props) => {
     const [weather, setWeather] = useState('');
     const [loaded, setLoaded] = useState(false);
+    const [notFound, setNotFound] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -19,9 +20,13 @@ const MainInfo = (props) => {
                 const weatherData = await response.json();
 
                 setWeather(weatherData);
+                props.setWeather(weatherData.weather[0].main);
                 setLoaded(true);
+                setNotFound(false);
             } catch (error) {
-                console.error('Error: ', error);
+                console.error(error);
+                setNotFound(true);
+                setLoaded(false);
             }
         })();
     }, [props.location, props.celsius]);
@@ -40,6 +45,10 @@ const MainInfo = (props) => {
                             '°' +
                             (props.celsius ? 'C' : 'F')}
                     </Temperature>
+                </MainWrapper>
+            ) : notFound ? (
+                <MainWrapper>
+                    <City>404 City / Network Not Found</City>
                 </MainWrapper>
             ) : (
                 <MainWrapper></MainWrapper>

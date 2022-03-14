@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import MainInfo from './components/MainInfo';
 import styled from 'styled-components';
 import clear from './images/clear.jpg';
+import cloudy from './images/cloudy.jpg';
+import mist from './images/mist.jpg';
+import rain from './images/rain.jpg';
+import snow from './images/snow.jpg';
+import thunderstorm from './images/thunderstorm.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Switch from './components/Switch';
@@ -9,6 +14,7 @@ import Switch from './components/Switch';
 function App() {
     const [searchValue, setSearchValue] = useState('Bandung');
     const [location, setLocation] = useState(searchValue);
+    const [weather, setWeather] = useState('clear');
     const [celsius, setCelsius] = useState(1);
 
     const handleSearch = (e) => {
@@ -32,7 +38,23 @@ function App() {
     });
 
     return (
-        <Container>
+        <Container
+            background={
+                weather === 'Clear'
+                    ? clear
+                    : weather === 'Clouds'
+                    ? cloudy
+                    : weather === 'Mist'
+                    ? mist
+                    : weather === 'Rain'
+                    ? rain
+                    : weather === 'Snow'
+                    ? snow
+                    : weather === 'Thunderstorm'
+                    ? thunderstorm
+                    : clear
+            }
+        >
             <SwitchWrapper>
                 <Switch onChange={handleUnit} />
             </SwitchWrapper>
@@ -47,7 +69,11 @@ function App() {
                 </SearchIcon>
             </SearchWrapper>
             <ContentWrapper>
-                <MainInfo location={location} celsius={celsius} />
+                <MainInfo
+                    location={location}
+                    celsius={celsius}
+                    setWeather={setWeather}
+                />
             </ContentWrapper>
         </Container>
     );
@@ -60,7 +86,7 @@ const Container = styled.div`
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-image: url(${clear});
+    background-image: url(${(props) => props.background});
     background-size: cover;
     background-position: bottom;
 `;

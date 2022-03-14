@@ -10,8 +10,8 @@ const Switch = (props) => {
                 onChange={props.onChange}
             />
             <span>
-                <span>F</span>
-                <span>C</span>
+                <span>°F</span>
+                <span>°C</span>
             </span>
             <a></a>
         </SwitchWrapper>
@@ -150,7 +150,7 @@ const SwitchWrapper = styled.label`
         font-size: 1.4em;
     }
     & > span span:first-of-type {
-        left: 70%;
+        left: 60%;
     }
 `;
 
