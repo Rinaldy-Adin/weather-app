@@ -48,7 +48,7 @@ const MainInfo = (props) => {
                 </MainWrapper>
             ) : notFound ? (
                 <MainWrapper>
-                    <City>404 City / Network Not Fund</City>
+                    <City>404 City / Network Not Found</City>
                 </MainWrapper>
             ) : (
                 <MainWrapper></MainWrapper>
