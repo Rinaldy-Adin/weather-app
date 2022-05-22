@@ -4,7 +4,7 @@ A react app that shows users the weather in a specific location using data fetch
 
 This project is part of and assingnment in the www.theodinproject.com javascript course about [Async Javascript and APIs](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript#asynchronous-javascript-and-apis)
 
-[Live Demo]()
+[Live Demo](https://rinaldy-adin.github.io/weather-app/)
 
 ### Built with
 
