@@ -10,7 +10,7 @@ const MainInfo = (props) => {
         (async () => {
             try {
                 const response = await fetch(
-                    `http://api.openweathermap.org/data/2.5/weather?q=${
+                    `https://api.openweathermap.org/data/2.5/weather?q=${
                         props.location
                     }&units=${
                         props.celsius ? 'metric' : 'imperial'
@@ -37,7 +37,7 @@ const MainInfo = (props) => {
                 <MainWrapper>
                     <City>{weather.name}</City>
                     <WeatherIcon
-                        src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
+                        src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
                     />
                     <Weather>{weather.weather[0].main}</Weather>
                     <Temperature>
